@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMI Library</title>
+    <!-- BOOTSTRAP CSS  -->
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">  
+    <!-- MY CSS  -->
+    <link rel="stylesheet" href="assets/css/main.css">   
+    <!-- JQuery  -->
+    <script type="text/javascript" src="jquery-3.7.1.min.js"></script>  
+</head>
+
+<body>
+    <div id="body">
+        <div id="warning">
+            Please rotate your device to landscape mode for the best experience.
+        </div>
+
+        <div id="contents" class="container-fluid">
+            <div id="header" class="bg-dark"></div>
+            <div id="navbar" class="bg-dark"></div>
+            <div id="container-section">
+                    <section id="section1" class="page bg-dark"></section>
+                    <section id="section2" class="page bg-dark"></section>
+                    <section id="section3" class="page bg-dark"></section>
+                    <section id="section4" class="page bg-dark"></section>
+                    <section id="section5" class="page bg-dark"></section>
+            </div>
+        </div>
+    </div>
+<!-- ====================== SCRIPTS ======================================================== -->
+<!-- BOOTSTRAP -->
+    <script type="text/javascript" src="assets/js/bootstrap/bootstrap.bundle.min.js"></script> 
+<!-- GLOBAL VARIABLE -->
+    <script type="text/javascript" src="assets/js/global.js"></script> 
+<!-- HEADER -->
+    <script type="text/javascript" src="assets/js/header/html.js"></script>
+    <script type="text/javascript" src="assets/js/header/general_command_html.js"></script>
+    <script type="text/javascript" src="assets/js/header/general_command.js"></script>
+    <script type="text/javascript" src="assets/js/header/joystick_html.js"></script>
+    <script type="text/javascript" src="assets/js/header/buttons.js"></script>
+    <script type="text/javascript" src="assets/js/header/commands.js"></script>
+    <script type="text/javascript" src="assets/js/header/joystick.js"></script>
+    <script type="text/javascript" src="assets/js/header/joystick_comands.js"></script>
+    <script type="text/javascript" src="assets/js/header/status_machine.js"></script>
+<!-- NAVBAR -->
+    <script type="text/javascript" src="assets/js/navbar/html.js"></script>
+    <script type="text/javascript" src="assets/js/navbar/script.js"></script>
+<!-- SECTION 1 -->
+    <script type="text/javascript" src="assets/js/section1/html.js"></script>
+<!-- SECTION 2 -->
+    <script type="text/javascript" src="assets/js/section2/html.js"></script>
+<!-- SECTION 3 -->
+    <script type="text/javascript" src="assets/js/section3/html.js"></script>
+<!-- SECTION 4 -->
+    <script type="text/javascript" src="assets/js/section4/html.js"></script>
+<!-- SECTION 5 -->
+    <script type="text/javascript" src="assets/js/section5/alarms_list.js"></script>
+    <script type="text/javascript" src="assets/js/section5/html.js"></script>
+<!-- READ I/O -->
+    <script type="text/javascript" src="assets/js/IORead.js"></script>
+
+
+    <script>
+        var elem = document.getElementById("myvideo");
+        function openFullscreen() {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+          }
+        }
+
+        window.onload = openFullscreen;
+
+
+        function readBits(integer) {
+        var bits = [];
+        var mask = 1;
+            for (var i = 0; i < 32; i++) { // Assuming 32-bit integers
+                bits.push(integer & mask ? 1 : 0);
+                mask <<= 1;
+            }
+            return bits
+        }
+
+        // Example usage:
+        var Digital_Input = 3; // Example integer
+        var bits = readBits(Digital_Input);
+        console.log(bits);
+
+        var limit_Switch_Left = bits[1];
+        console.log(bits[0]);
+        console.log(limit_Switch_Left);
+
+    </script>
+
+</body>
+</html>
